@@ -16,6 +16,7 @@ typedef struct App {
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 	TTF_Font* tileset;
+	Player * player;
 } App;
 App * initSDL(); // Initializes base SDL functions (SDL_Init, TTF_Init). Used at the start of a program.
 int uninitSDLBase(); // Uninitializes base SDL functions (SDL_Init, TTF_Init). Used at the end of a program.
@@ -30,7 +31,7 @@ void doInput(Player * player);
 
 /* draw.c */
 void prepareScene(App* app);
-void presentScene(App* app, Player * player);
+void presentScene(App* app);
 void drawGlyph(int drawable, int x, int y, App* app);
 
 /* entity.c */

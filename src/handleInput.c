@@ -7,23 +7,22 @@ void doInput(Player * player){
 		switch(event.type){
 
 		case SDL_QUIT:
-			exit(0);
+			exit(0);	
 			break;
 
 		case SDL_KEYDOWN:
 			switch(event.key.keysym.sym){
 			case SDLK_UP:
-				printf("Test\n");
-				movePlayerFrom(player, 0, -2);
+				movePlayerFrom(player, 0, -24);
 				break;
 			case SDLK_DOWN:
-				movePlayerFrom(player, 0, 2);
+				movePlayerFrom(player, 0, 24);
 				break;
 			case SDLK_LEFT:
-				movePlayerFrom(player, -2, 0);
+				movePlayerFrom(player, -24, 0);
 				break;
 			case SDLK_RIGHT:
-				movePlayerFrom(player, 2, 0);
+				movePlayerFrom(player, 24, 0);
 				break;
 			default:
 				break;

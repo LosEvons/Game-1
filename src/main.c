@@ -3,7 +3,6 @@
 int main(int argc, char* argv[]) {
 
 	App * app = initSDL();
-	Player * player = newPlayer(50, 100, '@');
 
 	_onexit( uninitSDLBase );
 
@@ -13,9 +12,9 @@ int main(int argc, char* argv[]) {
 	{
 		prepareScene(app);
 
-		doInput(player);
+		doInput(app->player);
 
-		presentScene(app, player);
+		presentScene(app);
 
 		SDL_Delay(16);
 	}

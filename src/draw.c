@@ -5,8 +5,8 @@ void prepareScene(App* app){
 	SDL_RenderClear(app->renderer);
 }
 
-void presentScene(App* app, Player * player){
-	drawPlayer(player, app);
+void presentScene(App* app){
+	drawPlayer(app->player, app);
 	SDL_RenderPresent(app->renderer);
 }
 
