@@ -37,7 +37,7 @@ void drawGlyph(int drawable, int x, int y, App* app);
 /* entity.c */
 Player * newPlayer(int x, int y, int glyph);
 void movePlayerTo(Player* player, int newx, int newy);
-int movePlayerFrom(Player* player, int dx, int dy);
+void movePlayerFrom(Player* player, int dx, int dy);
 void drawPlayer(Player* player, App* app);
 
 #endif

@@ -18,11 +18,6 @@ int main(int argc, char* argv[]) {
 
 		SDL_Delay(16);
 	}
-	
-	// Cleanup
-	if (uninitSDLBase() == 0) {
-		return 0;
-	}
 
 	return 0;
 }

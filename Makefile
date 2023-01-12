@@ -14,6 +14,9 @@ all:	rogue
 rogue:	${SOURCES}
 	${CC} ${SOURCES} ${CFLAGS} -o main
 
+debug: ${SOURCES}
+	${CC} -DDEBUG ${SOURCES} ${CFLAGS} -o main
+
 run:
 	./main
 
