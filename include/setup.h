@@ -34,9 +34,10 @@ int doInput(Player * player);
 void prepareScene(App* app);
 int presentScene(App* app);
 void drawGlyph(int drawable, int x, int y, App* app);
+void drawUTF8(char* drawable, int x, int y, App* app);
 
 /* entity.c */
-Player * newPlayer(int x, int y, int glyph);
+Player * newPlayer(int x, int y, char* glyph);
 void movePlayerTo(Player* player, int newx, int newy);
 void movePlayerFrom(Player* player, int dx, int dy);
 void drawPlayer(Player* player, App* app);

@@ -1,6 +1,6 @@
 #include "setup.h"
 
-Player * newPlayer(int x, int y, int glyph){
+Player * newPlayer(int x, int y, char* glyph){
 	Player * player = malloc(sizeof(Player));
 	player->x = x;
 	player->y = y;
@@ -24,5 +24,5 @@ void movePlayerFrom(Player * player, int dx, int dy){
 }
 
 void drawPlayer(Player * player, App* app){
-	drawGlyph(player->glyph, player->x, player->y, app);
+	drawUTF8(player->glyph, player->x, player->y, app);
 }

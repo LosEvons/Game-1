@@ -26,7 +26,8 @@ void drawGlyph(int drawable, int x, int y, App* app){
 void drawUTF8(char *drawable, int x, int y, App* app) {
 	SDL_Color color = {255, 255, 255, 255};
 	SDL_Surface *sur = TTF_RenderUTF8_Solid(app->tileset, drawable, color);
-	SDL_Rect rect = { x, y, sur->w, sur->h, };
+	//SDL_Rect rect = { x, y, sur->w, sur->h, };
+	SDL_Rect rect = { x, y, TILE_WIDTH, TILE_HEIGHT, };
 	SDL_Texture *tex = SDL_CreateTextureFromSurface(app->renderer, sur);
 	SDL_FreeSurface(sur);
 

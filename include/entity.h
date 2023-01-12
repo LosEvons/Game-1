@@ -4,7 +4,7 @@
 typedef struct Player {
 	int x;
 	int y;
-	int glyph;
+	char* glyph;
 } Player;
 
 #endif
