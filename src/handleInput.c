@@ -1,6 +1,6 @@
 #include "setup.h"
 
-void doInput(Player * player){
+int doInput(Player * player){
 	SDL_Event event;
 
 	while (SDL_PollEvent(&event)) {
@@ -13,23 +13,31 @@ void doInput(Player * player){
 		case SDL_KEYDOWN:
 			switch(event.key.keysym.sym){
 			case SDLK_UP:
-				movePlayerFrom(player, 0, -24);
+				movePlayerFrom(player, 0, -TILE_SIZE);
+				return 1;
 				break;
 			case SDLK_DOWN:
-				movePlayerFrom(player, 0, 24);
+				movePlayerFrom(player, 0, TILE_SIZE);
+				return 1;
 				break;
 			case SDLK_LEFT:
-				movePlayerFrom(player, -24, 0);
+				movePlayerFrom(player, -TILE_SIZE, 0);
+				return 1;
 				break;
 			case SDLK_RIGHT:
-				movePlayerFrom(player, 24, 0);
+				movePlayerFrom(player, TILE_SIZE, 0);
+				return 1;
 				break;
 			default:
+				return 0;
 				break;
 			}
 
 		default:
+			return 0;
 			break;
 		}
 	}
+
+	return 0;
 }

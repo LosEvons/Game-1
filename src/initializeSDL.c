@@ -40,7 +40,7 @@ App * initSDL() {
 	}
 
 	// Initialize tileset
-	TTF_Font* tileset = TTF_OpenFont(GAME_FONT, 24);
+	TTF_Font* tileset = TTF_OpenFont(GAME_FONT, TILE_SIZE);
 
 	if(!tileset){
 		TTF_SetError("Loading failed (code: %d)", 142);
@@ -48,7 +48,6 @@ App * initSDL() {
 		exit(1);
 	}
 	printf("Succesfully loaded tileset!\n");
-
 
 	// Initialize App
 	App * app = malloc(sizeof(App));

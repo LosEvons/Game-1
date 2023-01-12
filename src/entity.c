@@ -17,7 +17,7 @@ void movePlayerTo(Player * player, int newx, int newy){
 void movePlayerFrom(Player * player, int dx, int dy){
 	int newx = player->x + dx;
 	int newy = player->y + dy;
-	if ((newx > 0) && (newx < SCREEN_WIDTH) && (newy > 0) && (newy < SCREEN_HEIGHT)) {
+	if ((newx > 0) && (newx < SCREEN_WIDTH - TILE_SIZE) && (newy > 0) && (newy < SCREEN_HEIGHT - TILE_SIZE)) {
 		player->y += dy;
 		player->x += dx;
 	}
