@@ -22,7 +22,6 @@ typedef struct App {
 App * initSDL(); // Initializes base SDL functions (SDL_Init, TTF_Init). Used at the start of a program.
 int uninitSDLBase(); // Uninitializes base SDL functions (SDL_Init, TTF_Init). Used at the end of a program.
 
-/* tileset.c */
 #define GAME_FONT "./resources/MorePerfectDosVGA.ttf" // Font/Tileset used (ttf format)
 TTF_Font* loadTileset(); // My own extension to SDL:s own tileset load function (added error handling).
 void unloadTileset(); // Unloads the font/tileset. Used at the end of a program.
