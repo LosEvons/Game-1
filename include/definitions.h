@@ -11,6 +11,10 @@
 #define TILE_HEIGHT 	TILE_SIZE
 #define TILE_WIDTH 		TILE_SIZE / 2
 
+/* Map */
+#define LEVEL_WIDTH		(SCREEN_WIDTH / 2) / TILE_SIZE
+#define LEVEL_HEIGHT 	(SCREEN_HEIGHT / 2) / TILE_SIZE
+
 /* Characters */
 
 #define WALL_VERTICAL		"║"

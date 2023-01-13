@@ -3,6 +3,7 @@
 int main(int argc, char* argv[]) {
 
 	App * app = initSDL();
+	Level * level = newLevel();
 
 	_onexit( uninitSDLBase );
 
@@ -15,7 +16,7 @@ int main(int argc, char* argv[]) {
 
 		if (doInput(app->player)) { drawn = 0; }
 
-		if (!drawn) { drawn = presentScene(app); }
+		if (!drawn) { drawn = presentScene(app, level); }
 
 		SDL_Delay(16);
 	}

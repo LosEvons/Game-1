@@ -5,9 +5,10 @@ void prepareScene(App* app){
 	SDL_RenderClear(app->renderer);
 }
 
-int presentScene(App* app){
+int presentScene(App* app, Level * level){
 	drawPlayer(app->player, app);
 	drawScreenEdges(app);
+	drawLevel(level, app);
 	SDL_RenderPresent(app->renderer);
 
 	return 1;
