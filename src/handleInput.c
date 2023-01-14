@@ -28,6 +28,11 @@ int doInput(Player * player){
 				movePlayerFrom(player, TILE_SIZE, 0);
 				return 1;
 				break;
+
+			case SDLK_q:
+				exit(0);
+				break;
+
 			default:
 				return 0;
 				break;

@@ -17,12 +17,10 @@ void movePlayerTo(Player * player, int newx, int newy){
 void movePlayerFrom(Player * player, int dx, int dy){
 	int newx = player->x + dx;
 	int newy = player->y + dy;
-	if ((newx > 0) && (newx < SCREEN_WIDTH - TILE_SIZE) && (newy > 0) && (newy < SCREEN_HEIGHT - TILE_SIZE)) {
+	if ((newx > 0) && (newx < (LEVEL_WIDTH / TILE_WIDTH)) && (newy > 0) && (newy < (LEVEL_HEIGHT / TILE_HEIGHT))) {
 		player->y += dy;
 		player->x += dx;
 	}
 }
 
-void drawPlayer(Player * player, App* app){
-	drawUTF8(player->glyph, player->x, player->y, app);
-}
+void drawPlayer(Player * player, App* app){	drawUTF8(player->glyph, player->x, player->y, app); }

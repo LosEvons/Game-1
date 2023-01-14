@@ -1,9 +1,22 @@
 #include "setup.h"
+
+Graphic * newGraphic(){
+	Graphic * newGraphic;
+	newGraphic = malloc(sizeof(Graphic));
+
+	newGraphic->glyph = malloc(sizeof("."));
+	newGraphic->glyph = ".";
+
+	return newGraphic;
+}
+
 Level * newLevel(){
 	Level * newLevel;
 	newLevel = malloc(sizeof(Level));
 
 	newLevel->tiles = saveTilePositions();
+
+	newLevel->player = newPlayer(3 * TILE_WIDTH, 3 * TILE_HEIGHT, "@");
 
 	return newLevel;
 }
@@ -11,8 +24,8 @@ Level * newLevel(){
 Tile * newTile(){
 	Tile * newTile;
 	newTile = malloc(sizeof(Tile));
-	newTile->glyph = malloc(sizeof("."));
-	newTile->glyph = ".";
+	newTile->graphic = malloc(sizeof(Graphic *));
+	newTile->graphic = newGraphic();
 
 	return newTile;
 }
@@ -49,7 +62,10 @@ void drawLevel(Level * level, App* app) {
 	int x, y;
 	for (y = TILE_HEIGHT; y < LEVEL_HEIGHT; y += TILE_HEIGHT){
 		for (x = TILE_WIDTH; x < LEVEL_WIDTH; x += TILE_WIDTH){
-			drawUTF8(level->tiles[y][x]->glyph, x, y, app);
+			if ((x == level->player->x) && (y == level->player->y))
+				{ drawPlayer(level->player, app); }
+			else 
+				{ drawUTF8(level->tiles[y][x]->graphic->glyph, x, y, app); }
 		}
 	}
 }

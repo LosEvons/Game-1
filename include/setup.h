@@ -18,7 +18,6 @@ typedef struct App {
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 	TTF_Font* tileset;
-	Player * player;
 } App;
 
 App * initSDL(); // Initializes base SDL functions (SDL_Init, TTF_Init). Used at the start of a program.
@@ -45,6 +44,7 @@ void drawPlayer(Player* player, App* app);
 void drawScreenEdges(App * app);
 
 /* gamemap.c */
+Graphic * newGraphic();
 Level * newLevel();
 Tile * newTile();
 Tile *** saveTilePositions();

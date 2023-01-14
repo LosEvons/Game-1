@@ -10,13 +10,11 @@ int main(int argc, char* argv[]) {
 	int running = 1;
 	int drawn = 0;
 
-	drawLevel(level, app);
-
 	while (running)
 	{
 		prepareScene(app);
 
-		if (doInput(app->player)) { drawn = 0; }
+		if (doInput(level->player)) { drawn = 0; }
 
 		if (!drawn) { drawn = presentScene(app, level); }
 

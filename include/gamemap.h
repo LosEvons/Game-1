@@ -3,12 +3,17 @@
 
 #include "setup.h"
 
+typedef struct Graphic {
+	char * glyph;
+} Graphic;
+
 typedef struct Tile {
-	char* glyph;
+	Graphic * graphic;
 } Tile;
 
 typedef struct Level {
 	Tile *** tiles;
+	Player * player;
 } Level;
 
 #endif

@@ -6,22 +6,12 @@ void prepareScene(App* app){
 }
 
 int presentScene(App* app, Level * level){
-	drawPlayer(app->player, app);
+	//drawPlayer(app->player, app);
 	drawScreenEdges(app);
 	drawLevel(level, app);
 	SDL_RenderPresent(app->renderer);
 
 	return 1;
-}
-
-void drawGlyph(int drawable, int x, int y, App* app){
-	SDL_Color color = {255, 255, 255, 255};
-	SDL_Surface *sur = TTF_RenderGlyph_Solid(app->tileset, drawable, color);
-	SDL_Rect rect = { x, y, sur->w, sur->h, };
-	SDL_Texture *tex = SDL_CreateTextureFromSurface(app->renderer, sur);
-	SDL_FreeSurface(sur);
-
-	SDL_RenderCopy(app->renderer, tex, NULL, &rect);
 }
 
 void drawUTF8(char *drawable, int x, int y, App* app) {
