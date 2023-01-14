@@ -2,6 +2,7 @@
 #define GAMEMAP_H
 
 #include "setup.h"
+
 typedef struct Tile {
 	char* glyph;
 } Tile;

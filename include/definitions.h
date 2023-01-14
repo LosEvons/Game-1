@@ -7,13 +7,13 @@
 #define SCREEN_HEIGHT 	720
 
 /* Tiles */
-#define TILE_SIZE 	 	16
+#define TILE_SIZE 	 	24
 #define TILE_HEIGHT 	TILE_SIZE
 #define TILE_WIDTH 		TILE_SIZE / 2
 
 /* Map */
-#define LEVEL_WIDTH		(SCREEN_WIDTH / 2) / TILE_SIZE
-#define LEVEL_HEIGHT 	(SCREEN_HEIGHT / 2) / TILE_SIZE
+#define LEVEL_WIDTH		(SCREEN_WIDTH / 2)
+#define LEVEL_HEIGHT 	(SCREEN_HEIGHT / 2)
 
 /* Characters */
 

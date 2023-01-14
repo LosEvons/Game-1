@@ -10,6 +10,8 @@ int main(int argc, char* argv[]) {
 	int running = 1;
 	int drawn = 0;
 
+	drawLevel(level, app);
+
 	while (running)
 	{
 		prepareScene(app);
@@ -20,6 +22,7 @@ int main(int argc, char* argv[]) {
 
 		SDL_Delay(16);
 	}
+
 
 	return 0;
 }
