@@ -54,7 +54,6 @@ App * initSDL() {
 	app->window = window;
 	app->renderer = renderer;
 	app->tileset = tileset;
-	//app->player = newPlayer(48, 240, "@");
 	printf("Succesfully initialized App!\n");
 
 	return app;
