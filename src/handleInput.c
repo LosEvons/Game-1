@@ -13,19 +13,19 @@ int doInput(Player * player){
 		case SDL_KEYDOWN:
 			switch(event.key.keysym.sym){
 			case SDLK_UP:
-				movePlayerFrom(player, 0, -TILE_SIZE);
+				movePlayerFrom(player, 0, -TILE_HEIGHT);
 				return 1;
 				break;
 			case SDLK_DOWN:
-				movePlayerFrom(player, 0, TILE_SIZE);
+				movePlayerFrom(player, 0, TILE_HEIGHT);
 				return 1;
 				break;
 			case SDLK_LEFT:
-				movePlayerFrom(player, -TILE_SIZE, 0);
+				movePlayerFrom(player, -TILE_WIDTH, 0);
 				return 1;
 				break;
 			case SDLK_RIGHT:
-				movePlayerFrom(player, TILE_SIZE, 0);
+				movePlayerFrom(player, TILE_WIDTH, 0);
 				return 1;
 				break;
 

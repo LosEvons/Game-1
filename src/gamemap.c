@@ -24,7 +24,7 @@ Level * newLevel(){
 
 	newLevel->tiles = saveTilePositions();
 
-	newLevel->player = newPlayer(3 * TILE_WIDTH, 3 * TILE_HEIGHT, "@");
+	newLevel->player = newPlayer(3 * TILE_WIDTH + LEVEL_X_OFFSET, 3 * TILE_HEIGHT + LEVEL_Y_OFFSET, "@");
 
 	return newLevel;
 }
@@ -78,8 +78,8 @@ Tile *** saveTilePositions(){
 
 void drawLevel(Level * level, App* app) {
 	int x, y;
-	for (y = TILE_HEIGHT; y < LEVEL_HEIGHT; y += TILE_HEIGHT){
-		for (x = TILE_WIDTH; x < LEVEL_WIDTH; x += TILE_WIDTH){
+	for (y = LEVEL_Y_OFFSET; y < (LEVEL_HEIGHT + LEVEL_Y_OFFSET); y += TILE_HEIGHT){
+		for (x = LEVEL_X_OFFSET; x < (LEVEL_WIDTH + LEVEL_X_OFFSET); x += TILE_WIDTH){
 			if ((x == level->player->x) && (y == level->player->y))
 				{ drawPlayer(level->player, app); }
 			else 

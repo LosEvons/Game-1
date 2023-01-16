@@ -7,6 +7,7 @@ void prepareScene(App* app){
 
 int presentScene(App* app, Level * level){
 	//drawScreenEdges(app);
+	drawLeftPanel(app);
 	drawLevel(level, app);
 	SDL_RenderPresent(app->renderer);
 

@@ -42,6 +42,7 @@ void drawUTF8(char* drawable, int x, int y, App* app);
 
 /* ui.c */
 void drawScreenEdges(App * app);
+void drawLeftPanel(App * app);
 
 /* entity.c */
 Player * newPlayer(int x, int y, char* glyph);
