@@ -18,18 +18,17 @@
 /* Map */
 #define LEVEL_WIDTH		((VIRTUAL_SCREEN_WIDTH / 2) - 2)				//Virtual coordinate (-2 padding for sides)
 #define LEVEL_HEIGHT 	((VIRTUAL_SCREEN_HEIGHT - LOG_PANEL_HEIGHT) - 2)//Virtual coordinate (-2 padding for sides)
-#define LEVEL_X_OFFSET 	(LEFT_PANEL_WIDTH + 1)
-#define LEVEL_Y_OFFSET	1
+#define LEVEL_X_OFFSET 	(LEFT_PANEL_WIDTH + 1)							//Virtual coordinate
+#define LEVEL_Y_OFFSET	1 												//Virtual coordinate
 
 /* UI */
-#define LEFT_PANEL_WIDTH	(VIRTUAL_SCREEN_WIDTH / 4)
-#define RIGHT_PANEL_WIDTH 	(VIRTUAL_SCREEN_WIDTH / 4)
+#define LEFT_PANEL_WIDTH	(VIRTUAL_SCREEN_WIDTH / 4)					//Virtual coordinate
+#define RIGHT_PANEL_WIDTH 	(VIRTUAL_SCREEN_WIDTH / 4)					//Virtual coordinate
 
-#define LOG_PANEL_WIDTH		(VIRTUAL_SCREEN_WIDTH - LEFT_PANEL_WIDTH - RIGHT_PANEL_WIDTH)
-#define LOG_PANEL_HEIGHT 	(VIRTUAL_SCREEN_HEIGHT / 3)
+#define LOG_PANEL_WIDTH		(VIRTUAL_SCREEN_WIDTH - LEFT_PANEL_WIDTH - RIGHT_PANEL_WIDTH)	//Virtual coordinate
+#define LOG_PANEL_HEIGHT 	(VIRTUAL_SCREEN_HEIGHT / 3)										//Virtual coordinate
 
 /* Characters */
-
 #define WALL_VERTICAL		"║"
 #define WALL_HORIZONTAL		"═"
 #define WALL_BOTTOM_RIGHT	"╝"

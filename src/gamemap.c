@@ -1,31 +1,9 @@
 #include "setup.h"
 
-extern const SDL_Color COLOR_WHITE;
-extern const SDL_Color COLOR_GREY;
-
 Panel mapBorder = {
 	LEVEL_X_OFFSET - 1, LEVEL_Y_OFFSET - 1,
-	LEVEL_WIDTH + 2, LEVEL_HEIGHT + 1,
+	LEVEL_WIDTH + 2, LEVEL_HEIGHT + 2,
 };
-
-Graphic * newGraphic(char * nglyph, SDL_Color color){
-	Graphic * newGraphic;
-	newGraphic = malloc(sizeof(Graphic));
-	atexit_add(newGraphic);
-
-	newGraphic->glyph = malloc(sizeof(nglyph));
-	atexit_add(newGraphic->glyph);
-	newGraphic->glyph = nglyph;
-
-	newGraphic->fg = color;
-
-	return newGraphic;
-}
-
-void freeGraphic(Graphic * graphic) {
-	free(graphic->glyph);
-	free(graphic);
-}
 
 Level * newLevel(){
 	Level * newLevel;
@@ -51,24 +29,6 @@ void freeLevel(Level * level){
 
 	free(level->tiles);
 	free(level);
-}
-
-Tile * newTile(){
-	Tile * newTile;
-	newTile = malloc(sizeof(Tile));
-	atexit_add(newTile);
-
-	newTile->graphic = malloc(sizeof(Graphic *));
-	atexit_add(newTile->graphic);
-
-	newTile->graphic = newGraphic(".", COLOR_GREY);
-
-	return newTile;
-}
-
-void freeTile(Tile * tile){
-	freeGraphic(tile->graphic);
-	free(tile);
 }
 
 Tile *** saveTilePositions(){

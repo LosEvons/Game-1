@@ -16,7 +16,7 @@ Panel rightPanel = {
 
 void drawBox(App* app, int x, int y, int w, int h){
 	int ix, iy;
-	int truew = w - 1;
+	int truew = (w - 1);
 	int trueh = h;
 
 
@@ -38,8 +38,8 @@ void drawBox(App* app, int x, int y, int w, int h){
 
 void drawPanel(App* app, Panel panel){
 	int ix, iy;
-	int truew = panel.w - 1;
-	int trueh = panel.h;
+	int truew = (panel.w - 1);
+	int trueh = (panel.h - 1);
 
 
 	drawUTF8(WALL_TOP_LEFT, panel.x, panel.y, app);						// TOP LEFT
