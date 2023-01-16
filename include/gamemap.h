@@ -3,10 +3,6 @@
 
 #include "setup.h"
 
-typedef struct Graphic {
-	char * glyph;
-} Graphic;
-
 typedef struct Tile {
 	Graphic * graphic;
 } Tile;

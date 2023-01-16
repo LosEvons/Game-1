@@ -35,14 +35,14 @@ void drawUTF8(char *drawable, int x, int y, App* app) {
 	SDL_RenderCopy(app->renderer, tex, NULL, &rect);
 }
 
-void gridUTF8(char *drawable, int x, int y, App* app) {
+void gridUTF8(Graphic *drawable, int x, int y, App* app) {
 	int truexoffs = LEVEL_X_OFFSET * TILE_WIDTH;	// Get size of offset in pixels (not coordinates)
 	int trueyoffs = LEVEL_Y_OFFSET * TILE_HEIGHT;	// ^^
 	int truex = (x * TILE_WIDTH) + truexoffs;		// Get actual anchor position in pixels (not coordinates)
 	int truey = (y * TILE_HEIGHT) + trueyoffs;		// ^^
 
-	SDL_Color color = {255, 255, 255, 255};
-	SDL_Surface *sur = TTF_RenderUTF8_Solid(app->tileset, drawable, color);
+	//SDL_Color color = {255, 255, 255, 255};
+	SDL_Surface *sur = TTF_RenderUTF8_Blended(app->tileset, drawable->glyph, drawable->fg);
 	SDL_Rect rect = { truex, truey, TILE_WIDTH, TILE_HEIGHT };
 	SDL_Texture *tex = SDL_CreateTextureFromSurface(app->renderer, sur);
 	SDL_FreeSurface(sur);

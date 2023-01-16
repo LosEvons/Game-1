@@ -1,11 +1,16 @@
 #include "setup.h"
 
+extern const SDL_Color COLOR_RED;
+
 Player * newPlayer(int x, int y, char* glyph){
 	Player * player = malloc(sizeof(Player));
 	atexit_add(player);
 	player->x = x;
 	player->y = y;
-	player->glyph = glyph;
+
+	player->graphic = malloc(sizeof(Graphic));
+	atexit_add(player->graphic);
+	player->graphic = newGraphic(glyph, COLOR_RED);
 
 	return player;
 }
@@ -27,4 +32,4 @@ void movePlayerFrom(Player * player, int dx, int dy){
 
 }
 
-void drawPlayer(Player * player, App* app){	gridUTF8(player->glyph, player->x, player->y, app); }
+void drawPlayer(Player * player, App* app){	gridUTF8(player->graphic, player->x, player->y, app); }

@@ -8,6 +8,7 @@
 #include "SDL_ttf.h"
 // Own header files
 #include "definitions.h"
+#include "graphic.h"
 // Entities
 #include "entity.h"
 // Map
@@ -41,7 +42,7 @@ void prepareScene(App* app);
 int presentScene(App* app, Level * level);
 void drawGlyph(int drawable, int x, int y, App* app);
 void drawUTF8(char* drawable, int x, int y, App* app);
-void gridUTF8(char* drawable, int x, int y, App* app);
+void gridUTF8(Graphic * drawable, int x, int y, App* app);
 void freeDrawUTF8(char* drawable, int x, int y, App* app);
 
 /* ui.c */
@@ -55,7 +56,7 @@ void movePlayerFrom(Player* player, int dx, int dy);
 void drawPlayer(Player* player, App* app);
 
 /* gamemap.c */
-Graphic * newGraphic(char * nglyph);
+Graphic * newGraphic(char * nglyph, SDL_Color color);
 void freeGraphic(Graphic * graphic);
 Level * newLevel();
 void freeLevel(Level * level);

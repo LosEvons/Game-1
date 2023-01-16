@@ -1,5 +1,9 @@
 #include "setup.h"
 
+const SDL_Color COLOR_WHITE = {255, 255, 255};
+const SDL_Color COLOR_GREY = {150, 150, 150};
+const SDL_Color COLOR_RED = {200, 0, 0};
+
 int main(int argc, char* argv[]) {
 
 	atexit( clean );
