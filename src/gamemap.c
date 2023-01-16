@@ -24,7 +24,7 @@ Level * newLevel(){
 
 	newLevel->tiles = saveTilePositions();
 
-	newLevel->player = newPlayer(3 * TILE_WIDTH + LEVEL_X_OFFSET, 3 * TILE_HEIGHT + LEVEL_Y_OFFSET, "@");
+	newLevel->player = newPlayer(3, 3, "@");
 
 	return newLevel;
 }
@@ -62,7 +62,7 @@ Tile *** saveTilePositions(){
 	int x, y;
 	Tile *** tiles;
 
-	tiles = malloc(sizeof(Tile *) * LEVEL_HEIGHT);
+	tiles = malloc(sizeof(Tile **) * LEVEL_HEIGHT);
 	atexit_add(tiles);
 
 	for (y = 0; y < LEVEL_HEIGHT; y++){
@@ -72,18 +72,18 @@ Tile *** saveTilePositions(){
 			tiles[y][x] = newTile();
 		}
 	}
-
 	return tiles;
 }
 
 void drawLevel(Level * level, App* app) {
 	int x, y;
-	for (y = LEVEL_Y_OFFSET; y < (LEVEL_HEIGHT + LEVEL_Y_OFFSET); y += TILE_HEIGHT){
-		for (x = LEVEL_X_OFFSET; x < (LEVEL_WIDTH + LEVEL_X_OFFSET); x += TILE_WIDTH){
+
+	for (y = 0; y < LEVEL_HEIGHT; y++){
+		for (x = 0; x < LEVEL_WIDTH; x++){
 			if ((x == level->player->x) && (y == level->player->y))
-				{ drawPlayer(level->player, app); }
-			else 
-				{ drawUTF8(level->tiles[y][x]->graphic->glyph, x, y, app); }
+				drawPlayer(level->player, app);
+			else
+				gridUTF8(level->tiles[y][x]->graphic->glyph, x, y, app);
 		}
 	}
 }

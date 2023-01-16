@@ -12,6 +12,8 @@
 #include "entity.h"
 // Map
 #include "gamemap.h"
+// UI
+#include "ui.h"
 
 /* memory_utils.c */
 void atexit_add(void *data);
@@ -39,10 +41,15 @@ void prepareScene(App* app);
 int presentScene(App* app, Level * level);
 void drawGlyph(int drawable, int x, int y, App* app);
 void drawUTF8(char* drawable, int x, int y, App* app);
+void gridUTF8(char* drawable, int x, int y, App* app);
+void freeDrawUTF8(char* drawable, int x, int y, App* app);
 
 /* ui.c */
+void drawBox(App * app, int x, int y, int w, int h);
 void drawScreenEdges(App * app);
 void drawLeftPanel(App * app);
+void drawRightPanel(App * app);
+void drawLogPanel(App * app);
 
 /* entity.c */
 Player * newPlayer(int x, int y, char* glyph);
