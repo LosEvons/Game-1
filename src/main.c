@@ -2,10 +2,10 @@
 
 int main(int argc, char* argv[]) {
 
+	atexit( clean );
+
 	App * app = initSDL();
 	Level * level = newLevel();
-
-	_onexit( uninitSDLBase );
 
 	int running = 1;
 	int drawn = 0;

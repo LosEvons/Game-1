@@ -2,6 +2,7 @@
 
 Player * newPlayer(int x, int y, char* glyph){
 	Player * player = malloc(sizeof(Player));
+	atexit_add(player);
 	player->x = x;
 	player->y = y;
 	player->glyph = glyph;

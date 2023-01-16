@@ -51,6 +51,7 @@ App * initSDL() {
 
 	// Initialize App
 	App * app = malloc(sizeof(App));
+	atexit_add(app);
 	app->window = window;
 	app->renderer = renderer;
 	app->tileset = tileset;
@@ -63,7 +64,12 @@ int uninitSDLBase(App * app) {
 	SDL_DestroyWindow(app->window);
 	SDL_DestroyRenderer(app->renderer);
 	TTF_CloseFont(app->tileset);
+
+	free(app->window);
+	free(app->renderer);
+	free(app->tileset);
 	free(app);
+	
 	TTF_Quit();
 	SDL_Quit();
 

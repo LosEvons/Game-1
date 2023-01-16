@@ -13,6 +13,10 @@
 // Map
 #include "gamemap.h"
 
+/* memory_utils.c */
+void atexit_add(void *data);
+void clean(void);
+
 /* initializeSDL.c */
 typedef struct App {
 	SDL_Window* window;
@@ -21,7 +25,7 @@ typedef struct App {
 } App;
 
 App * initSDL(); // Initializes base SDL functions (SDL_Init, TTF_Init). Used at the start of a program.
-int uninitSDLBase(); // Uninitializes base SDL functions (SDL_Init, TTF_Init). Used at the end of a program.
+int uninitSDLBase(App * app); // Uninitializes base SDL functions (SDL_Init, TTF_Init). Used at the end of a program.
 
 #define GAME_FONT "./resources/MorePerfectDosVGA.ttf" // Font/Tileset used (ttf format)
 TTF_Font* loadTileset(); // My own extension to SDL:s own tileset load function (added error handling).
@@ -36,19 +40,23 @@ int presentScene(App* app, Level * level);
 void drawGlyph(int drawable, int x, int y, App* app);
 void drawUTF8(char* drawable, int x, int y, App* app);
 
+/* ui.c */
+void drawScreenEdges(App * app);
+
 /* entity.c */
 Player * newPlayer(int x, int y, char* glyph);
 void movePlayerTo(Player* player, int newx, int newy);
 void movePlayerFrom(Player* player, int dx, int dy);
 void drawPlayer(Player* player, App* app);
-void drawScreenEdges(App * app);
 
 /* gamemap.c */
-Graphic * newGraphic();
+Graphic * newGraphic(char * nglyph);
+void freeGraphic(Graphic * graphic);
 Level * newLevel();
+void freeLevel(Level * level);
 Tile * newTile();
+void freeTile(Tile * tile);
 Tile *** saveTilePositions();
 void drawLevel(Level * level, App * app);
-void freeLevel(Level * level);
 
 #endif
