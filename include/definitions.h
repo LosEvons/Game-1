@@ -16,16 +16,17 @@
 #define VIRTUAL_SCREEN_HEIGHT 	(SCREEN_HEIGHT / TILE_HEIGHT)	//Virtual coordinate
 
 /* Map */
-#define LEVEL_WIDTH		((VIRTUAL_SCREEN_WIDTH / 2) - 2)		//Virtual coordinate (-2 padding for sides)
-#define LEVEL_HEIGHT 	((VIRTUAL_SCREEN_HEIGHT / 2) - 2)		//Virtual coordinate (-2 padding for sides)
-#define LEVEL_X_OFFSET 	(LEFT_PANEL_WIDTH + TILE_WIDTH)
-#define LEVEL_Y_OFFSET	(TILE_HEIGHT)
+#define LEVEL_WIDTH		((VIRTUAL_SCREEN_WIDTH / 2) - 2)				//Virtual coordinate (-2 padding for sides)
+#define LEVEL_HEIGHT 	((VIRTUAL_SCREEN_HEIGHT - LOG_PANEL_HEIGHT) - 2)//Virtual coordinate (-2 padding for sides)
+#define LEVEL_X_OFFSET 	(LEFT_PANEL_WIDTH + 1)
+#define LEVEL_Y_OFFSET	1
 
 /* UI */
-#define LEFT_PANEL_WIDTH	(SCREEN_WIDTH / 4)
-#define RIGHT_PANEL_WIDTH 	(SCREEN_WIDTH / 4)
-#define LOG_PANEL_WIDTH		(SCREEN_WIDTH - LEFT_PANEL_WIDTH - RIGHT_PANEL_WIDTH)
-#define LOG_PANEL_HEIGHT 	(SCREEN_HEIGHT / 4)
+#define LEFT_PANEL_WIDTH	(VIRTUAL_SCREEN_WIDTH / 4)
+#define RIGHT_PANEL_WIDTH 	(VIRTUAL_SCREEN_WIDTH / 4)
+
+#define LOG_PANEL_WIDTH		(VIRTUAL_SCREEN_WIDTH - LEFT_PANEL_WIDTH - RIGHT_PANEL_WIDTH)
+#define LOG_PANEL_HEIGHT 	(VIRTUAL_SCREEN_HEIGHT / 3)
 
 /* Characters */
 

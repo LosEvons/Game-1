@@ -1,5 +1,10 @@
 #include "setup.h"
 
+Panel mapBorder = {
+	LEVEL_X_OFFSET - 1, LEVEL_Y_OFFSET - 1,
+	LEVEL_WIDTH + 2, LEVEL_HEIGHT + 1,
+};
+
 Graphic * newGraphic(char * nglyph){
 	Graphic * newGraphic;
 	newGraphic = malloc(sizeof(Graphic));

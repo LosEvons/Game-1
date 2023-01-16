@@ -2,12 +2,11 @@
 #define UI_H
 #include "setup.h"
 
-typedef struct UIElement {
+typedef struct Panel {
 	int x;
 	int y;
 	int w;
 	int h;
-} UIElement;
-
+} Panel;
 
 #endif

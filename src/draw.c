@@ -1,13 +1,21 @@
 #include "setup.h"
 
+extern Panel logPanel;
+extern Panel leftPanel;
+extern Panel rightPanel;
+extern Panel mapBorder;
+
+
 void prepareScene(App* app){
 	SDL_SetRenderDrawColor(app->renderer, 50, 50, 50, 255);
 	SDL_RenderClear(app->renderer);
 }
 
 int presentScene(App* app, Level * level){
-	drawBox(app, 0, 0, 10, VIRTUAL_SCREEN_HEIGHT);
-	drawBox(app, 10, 0, 10, VIRTUAL_SCREEN_HEIGHT);
+	drawPanel(app, logPanel);
+	drawPanel(app, leftPanel);
+	drawPanel(app, rightPanel);
+	drawPanel(app, mapBorder);
 	drawLevel(level, app);
 	SDL_RenderPresent(app->renderer);
 
@@ -28,8 +36,10 @@ void drawUTF8(char *drawable, int x, int y, App* app) {
 }
 
 void gridUTF8(char *drawable, int x, int y, App* app) {
-	int truex = (x * TILE_WIDTH) + LEVEL_X_OFFSET;
-	int truey = (y * TILE_HEIGHT) + LEVEL_Y_OFFSET;
+	int truexoffs = LEVEL_X_OFFSET * TILE_WIDTH;	// Get size of offset in pixels (not coordinates)
+	int trueyoffs = LEVEL_Y_OFFSET * TILE_HEIGHT;	// ^^
+	int truex = (x * TILE_WIDTH) + truexoffs;		// Get actual anchor position in pixels (not coordinates)
+	int truey = (y * TILE_HEIGHT) + trueyoffs;		// ^^
 
 	SDL_Color color = {255, 255, 255, 255};
 	SDL_Surface *sur = TTF_RenderUTF8_Solid(app->tileset, drawable, color);

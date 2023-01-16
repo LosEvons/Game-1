@@ -46,10 +46,7 @@ void freeDrawUTF8(char* drawable, int x, int y, App* app);
 
 /* ui.c */
 void drawBox(App * app, int x, int y, int w, int h);
-void drawScreenEdges(App * app);
-void drawLeftPanel(App * app);
-void drawRightPanel(App * app);
-void drawLogPanel(App * app);
+void drawPanel(App * app, Panel panel);
 
 /* entity.c */
 Player * newPlayer(int x, int y, char* glyph);
