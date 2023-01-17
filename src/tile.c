@@ -3,15 +3,18 @@
 extern const SDL_Color COLOR_WHITE;
 extern const SDL_Color COLOR_GREY;
 
-Tile * newTile(){
+
+
+Tile * newTile(char* glyph, SDL_Color color, int blocking){
 	Tile * newTile;
 	newTile = malloc(sizeof(Tile));
 	atexit_add(newTile);
 
 	newTile->graphic = malloc(sizeof(Graphic *));
 	atexit_add(newTile->graphic);
+	newTile->graphic = newGraphic(glyph, color);
 
-	newTile->graphic = newGraphic(".", COLOR_GREY);
+	newTile->blocking = blocking;
 
 	return newTile;
 }

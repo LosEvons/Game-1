@@ -2,7 +2,7 @@
 
 extern const SDL_Color COLOR_RED;
 
-Player * newPlayer(int x, int y, char* glyph){
+Player * newPlayer(int x, int y, char* glyph, Level * level){
 	Player * player = malloc(sizeof(Player));
 	atexit_add(player);
 	player->x = x;
@@ -11,6 +11,10 @@ Player * newPlayer(int x, int y, char* glyph){
 	player->graphic = malloc(sizeof(Graphic));
 	atexit_add(player->graphic);
 	player->graphic = newGraphic(glyph, COLOR_RED);
+
+	player->level = malloc(sizeof(Level *));
+	atexit_add(player->level);
+	player->level = level;
 
 	return player;
 }
@@ -24,12 +28,17 @@ void movePlayerFrom(Player * player, int dx, int dy){
 	int newx = player->x + dx;
 	int newy = player->y + dy;
 
-	//player->x += ((newx < (LEVEL_WIDTH + LEVEL_X_OFFSET)) && (newx >= LEVEL_X_OFFSET)) ? dx : 0;
-	//player->y += ((newy < (LEVEL_HEIGHT + LEVEL_Y_OFFSET)) && (newy >= LEVEL_Y_OFFSET)) ? dy : 0;
-	
-	player->x += (newx < LEVEL_WIDTH) && (newx >= 0) ? dx : 0;
-	player->y += (newy < LEVEL_HEIGHT) && (newy >= 0) ? dy : 0;
+	int tileCountY = sizeof(player->level->tiles[0]);
+	int tileCountX = sizeof(player->level->tiles[0]);
+	printf("Y: %d X: %d", tileCountY, tileCountX);
 
+	if ((newx >= 0) && (newx < LEVEL_WIDTH)){
+		player->x += (player->level->tiles[newy][newx]->blocking == 0) ? dx : 0;
+	}
+
+	if ((newy >= 0) && (newy < LEVEL_HEIGHT)){
+		player->y += (player->level->tiles[newy][newx]->blocking == 0) ? dy : 0;
+	}
 }
 
 void drawPlayer(Player * player, App* app){	gridUTF8(player->graphic, player->x, player->y, app); }

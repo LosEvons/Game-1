@@ -50,19 +50,29 @@ void drawBox(App * app, int x, int y, int w, int h);
 void drawPanel(App * app, Panel panel);
 
 /* entity.c */
-Player * newPlayer(int x, int y, char* glyph);
+Player * newPlayer(int x, int y, char* glyph, Level * level);
 void movePlayerTo(Player* player, int newx, int newy);
 void movePlayerFrom(Player* player, int dx, int dy);
 void drawPlayer(Player* player, App* app);
 
-/* gamemap.c */
+/* graphic.c */
 Graphic * newGraphic(char * nglyph, SDL_Color color);
 void freeGraphic(Graphic * graphic);
-Level * newLevel();
-void freeLevel(Level * level);
-Tile * newTile();
+
+/* tile.c */
+Tile * newTile(char* glyph, SDL_Color color, int blocking);
 void freeTile(Tile * tile);
-Tile *** saveTilePositions();
+
+/* gamemap.c */
+Level * newLevel();
+Level * newCellarLevel();
+void freeLevel(Level * level);
+Tile *** initFloorTiles();
+Tile *** initWallTiles();
 void drawLevel(Level * level, App * app);
+
+/* procgen.c */
+Room * newRoom(int x, int y, int w, int h);
+void carveRoom(Level * level, Room * room);
 
 #endif

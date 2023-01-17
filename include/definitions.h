@@ -20,6 +20,10 @@
 #define LEVEL_HEIGHT 	((VIRTUAL_SCREEN_HEIGHT - LOG_PANEL_HEIGHT) - 2)//Virtual coordinate (-2 padding for sides)
 #define LEVEL_X_OFFSET 	(LEFT_PANEL_WIDTH + 1)							//Virtual coordinate
 #define LEVEL_Y_OFFSET	1 												//Virtual coordinate
+// Procgen
+#define MAX_ROOMS		2
+#define MAX_ROOM_SIZE	6
+#define MIN_ROOM_SIZE	3
 
 /* UI */
 #define LEFT_PANEL_WIDTH	(VIRTUAL_SCREEN_WIDTH / 4)					//Virtual coordinate
