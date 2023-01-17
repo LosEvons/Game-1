@@ -2,7 +2,8 @@
 #define SETUP_H
 
 // Standard libraries
-#include "stdio.h"
+#include <stdio.h>
+#include <time.h>
 // SDL libraries
 #include "SDL.h"
 #include "SDL_ttf.h"
@@ -73,6 +74,9 @@ void drawLevel(Level * level, App * app);
 
 /* procgen.c */
 Room * newRoom(int x, int y, int w, int h);
+Room * generateRoom();
 void carveRoom(Level * level, Room * room);
+void carveRooms(Level * level);
+Room ** generateRooms();
 
 #endif

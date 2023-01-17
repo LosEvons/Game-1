@@ -4,6 +4,8 @@ int main(int argc, char* argv[]) {
 
 	atexit( clean );
 
+	srand(time(NULL));	// Random seed from time
+
 	App * app = initSDL();
 	Level * level = newCellarLevel();
 

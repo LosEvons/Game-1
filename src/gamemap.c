@@ -29,12 +29,9 @@ Level * newCellarLevel(){
 
 	newLevel->player = newPlayer(3, 3, "@", newLevel);
 
-	newLevel->rooms = malloc(sizeof(Room) * MAX_ROOMS);
-	atexit_add(newLevel->rooms);
+	newLevel->rooms = generateRooms();
 
-	newLevel->rooms[0] = newRoom(2, 2, 5, 5);
-
-	carveRoom(newLevel, newLevel->rooms[0]);
+	carveRooms(newLevel);
 
 	return newLevel;
 }
