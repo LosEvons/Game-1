@@ -12,7 +12,7 @@ Player * newPlayer(int x, int y, char* glyph, Level * level){
 	atexit_add(player->graphic);
 	player->graphic = newGraphic(glyph, COLOR_RED);
 
-	player->level = malloc(sizeof(Level *));
+	player->level = malloc(sizeof(Level **));
 	atexit_add(player->level);
 	player->level = level;
 
@@ -28,17 +28,24 @@ void movePlayerFrom(Player * player, int dx, int dy){
 	int newx = player->x + dx;
 	int newy = player->y + dy;
 
-	int tileCountY = sizeof(player->level->tiles[0]);
-	int tileCountX = sizeof(player->level->tiles[0]);
-	printf("Y: %d X: %d", tileCountY, tileCountX);
+	if ((newx < 0) || (newx >= LEVEL_WIDTH) || (newy < 0) || (newy >= LEVEL_HEIGHT)){
+		return;
+	}
+	else {
+		player->x += (player->level->tiles[newy][newx]->blocking == 0) ? dx : 0;
+		player->y += (player->level->tiles[newy][newx]->blocking == 0) ? dy : 0;
+	}
+
+	/*
 
 	if ((newx >= 0) && (newx < LEVEL_WIDTH)){
-		player->x += (player->level->tiles[newy][newx]->blocking == 0) ? dx : 0;
+		player->x += (&player->level->tiles[newy][newx]->blocking == 0) ? dx : 0;
 	}
 
 	if ((newy >= 0) && (newy < LEVEL_HEIGHT)){
-		player->y += (player->level->tiles[newy][newx]->blocking == 0) ? dy : 0;
+		player->y += (&player->level->tiles[newy][newx]->blocking == 0) ? dy : 0;
 	}
+	*/
 }
 
 void drawPlayer(Player * player, App* app){	gridUTF8(player->graphic, player->x, player->y, app); }

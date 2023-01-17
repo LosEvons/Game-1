@@ -67,7 +67,7 @@ Tile *** initWallTiles(){
 		tiles[y] = malloc(sizeof(Tile *) * LEVEL_WIDTH);
 		atexit_add(tiles[y]);
 		for (x = 0; x < LEVEL_WIDTH; x++){
-			tiles[y][x] = newTile("#", COLOR_WHITE, 0);
+			tiles[y][x] = newTile("#", COLOR_WHITE, 1);
 		}
 	}
 	return tiles;
