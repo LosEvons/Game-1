@@ -5,6 +5,8 @@ extern Panel leftPanel;
 extern Panel rightPanel;
 extern Panel mapBorder;
 
+extern MessageLog * messageLog;
+
 
 void prepareScene(App* app){
 	SDL_SetRenderDrawColor(app->renderer, 50, 50, 50, 255);
@@ -13,6 +15,7 @@ void prepareScene(App* app){
 
 int presentScene(App* app, Level * level){
 	drawPanel(app, logPanel);
+	drawMessages(messageLog, app);
 	drawPanel(app, leftPanel);
 	drawPanel(app, rightPanel);
 	drawPanel(app, mapBorder);
@@ -20,6 +23,21 @@ int presentScene(App* app, Level * level){
 	SDL_RenderPresent(app->renderer);
 
 	return 1;
+}
+
+void drawUTF8Text(char *drawable, int x, int y, App* app) {
+	int truex = (x * TILE_WIDTH);
+	int truey = (y * TILE_HEIGHT);
+
+	int strW = strlen(drawable) * TILE_WIDTH;
+
+	SDL_Color color = {255, 255, 255, 255};
+	SDL_Surface *sur = TTF_RenderUTF8_Solid(app->tileset, drawable, color);
+	SDL_Rect rect = { truex, truey, strW / 2, TILE_HEIGHT / 2 };
+	SDL_Texture *tex = SDL_CreateTextureFromSurface(app->renderer, sur);
+	SDL_FreeSurface(sur);
+
+	SDL_RenderCopy(app->renderer, tex, NULL, &rect);
 }
 
 void drawUTF8(char *drawable, int x, int y, App* app) {

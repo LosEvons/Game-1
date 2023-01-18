@@ -9,6 +9,9 @@
 #include "SDL_ttf.h"
 // Own header files
 #include "definitions.h"
+// Logger
+#include "logger.h"
+// Graphic
 #include "graphic.h"
 // Entities
 #include "entity.h"
@@ -33,6 +36,14 @@ typedef struct Position {
 void atexit_add(void *data);
 void clean(void);
 
+/* logger.c */
+MessageLog * initMessageLog();
+void addMessage(MessageLog * messageLog, enum MessageLevel messageLevel, char* messageText);
+Message * getMessageFromIndex(MessageLog * messageLog, int index);
+Message * scrollBackMessageLog(Message * message);
+Message * scrollForwardMessageLog(Message * message);
+void drawMessages(MessageLog * messageLog, App * app);
+
 /* initializeSDL.c */
 App * initSDL(); // Initializes base SDL functions (SDL_Init, TTF_Init). Used at the start of a program.
 int uninitSDLBase(App * app); // Uninitializes base SDL functions (SDL_Init, TTF_Init). Used at the end of a program.
@@ -49,6 +60,7 @@ void prepareScene(App* app);
 int presentScene(App* app, Level * level);
 void drawGlyph(int drawable, int x, int y, App* app);
 void drawUTF8(char* drawable, int x, int y, App* app);
+void drawUTF8Text(char* drawable, int x, int y, App* app);
 void gridUTF8(Graphic * drawable, int x, int y, App* app);
 void freeDrawUTF8(char* drawable, int x, int y, App* app);
 

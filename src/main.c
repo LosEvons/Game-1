@@ -1,5 +1,7 @@
 #include "setup.h"
 
+MessageLog * messageLog;
+
 int main(int argc, char* argv[]) {
 
 	atexit( clean );
@@ -8,6 +10,11 @@ int main(int argc, char* argv[]) {
 
 	App * app = initSDL();
 	Level * level = newCellarLevel();
+
+	messageLog = initMessageLog();
+	addMessage(messageLog, DATA, "Test 2");
+
+	//addMessage(&messageLog, DATA, "Test Message!\n");
 
 	int running = 1;
 	int drawn = 0;

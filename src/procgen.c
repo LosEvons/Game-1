@@ -2,8 +2,6 @@
 
 extern const SDL_Color COLOR_GREY;
 
-int randRange(int min, int max){ return rand() % ((max) - (min) + 1) + (min); }
-
 Room * newRoom(int x, int y, int w, int h){
 	Room * newRoom;
 	newRoom = malloc(sizeof(Room));
@@ -46,7 +44,7 @@ int detectRoomOverlap(Room ** rooms, Room * room, int currentRoomCount){
 					&& (room->y <= (rooms[i]->y + rooms[i]->h))
 				)
 			){
-			printf("Room rejected!\n");
+			//printf("Room rejected!\n");
 			return 1;
 		}
 	}
