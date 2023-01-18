@@ -27,11 +27,14 @@ Level * newCellarLevel(){
 
 	newLevel->tiles = initWallTiles();
 
-	newLevel->player = newPlayer(3, 3, "@", newLevel);
-
 	newLevel->rooms = generateRooms();
 
 	carveRooms(newLevel);
+
+	carveHallways(newLevel);
+
+	Position playerStartPos = getRoomCenter(newLevel->rooms[0]);
+	newLevel->player = newPlayer(playerStartPos.x, playerStartPos.y, "@", newLevel);
 
 	return newLevel;
 }
@@ -75,7 +78,7 @@ void drawLevel(Level * level, App* app) {
 
 	for (y = 0; y < LEVEL_HEIGHT; y++){
 		for (x = 0; x < LEVEL_WIDTH; x++){
-			if ((x == level->player->x) && (y == level->player->y))
+			if ((x == level->player->position->x) && (y == level->player->position->y))
 				drawPlayer(level->player, app);
 			else
 				gridUTF8(level->tiles[y][x]->graphic, x, y, app);

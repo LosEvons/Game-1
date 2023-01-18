@@ -3,9 +3,8 @@
 #include "setup.h"
 
 typedef struct Player {
-	int x;
-	int y;
-	Graphic * graphic;
+	struct Position * position;
+	struct Graphic * graphic;
 	struct Level * level;
 } Player;
 

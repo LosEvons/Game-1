@@ -17,17 +17,23 @@
 // UI
 #include "ui.h"
 
-/* memory_utils.c */
-void atexit_add(void *data);
-void clean(void);
-
-/* initializeSDL.c */
+/* Structs */
 typedef struct App {
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 	TTF_Font* tileset;
 } App;
 
+typedef struct Position {
+	int x;
+	int y;
+} Position;
+
+/* memory_utils.c */
+void atexit_add(void *data);
+void clean(void);
+
+/* initializeSDL.c */
 App * initSDL(); // Initializes base SDL functions (SDL_Init, TTF_Init). Used at the start of a program.
 int uninitSDLBase(App * app); // Uninitializes base SDL functions (SDL_Init, TTF_Init). Used at the end of a program.
 
@@ -74,9 +80,14 @@ void drawLevel(Level * level, App * app);
 
 /* procgen.c */
 Room * newRoom(int x, int y, int w, int h);
+Position getRoomCenter(Room * room);
 Room * generateRoom();
 void carveRoom(Level * level, Room * room);
 void carveRooms(Level * level);
 Room ** generateRooms();
+
+void carveHallways(Level * level);
+void carveVerticalHallway(Level * level, int startY, int endY, int baseX);
+void carveHorizontalHallway(Level * level, int startX, int endX, int baseY);
 
 #endif
