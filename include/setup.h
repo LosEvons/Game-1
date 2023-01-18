@@ -60,7 +60,7 @@ void prepareScene(App* app);
 int presentScene(App* app, Level * level);
 void drawGlyph(int drawable, int x, int y, App* app);
 void drawUTF8(char* drawable, int x, int y, App* app);
-void drawUTF8Text(char* drawable, int x, int y, App* app);
+void drawUTF8Text(Message * message, int x, int y, App* app);
 void gridUTF8(Graphic * drawable, int x, int y, App* app);
 void freeDrawUTF8(char* drawable, int x, int y, App* app);
 

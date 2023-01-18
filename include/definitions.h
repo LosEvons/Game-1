@@ -11,6 +11,11 @@
 #define TILE_HEIGHT 	TILE_SIZE
 #define TILE_WIDTH 		(TILE_SIZE / 2)
 
+#define LOG_TILE_SIZE		(TILE_SIZE / 2)
+#define LOG_TILE_HEIGHT		LOG_TILE_SIZE
+#define LOG_TILE_PADDING	(TILE_SIZE / 3)
+#define LOG_TILE_WIDTH 		(LOG_TILE_SIZE / 2)
+
 /* Virtual Screen */
 #define VIRTUAL_SCREEN_WIDTH	(SCREEN_WIDTH / TILE_WIDTH)		//Virtual coordinate
 #define VIRTUAL_SCREEN_HEIGHT 	(SCREEN_HEIGHT / TILE_HEIGHT)	//Virtual coordinate

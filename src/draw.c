@@ -25,15 +25,15 @@ int presentScene(App* app, Level * level){
 	return 1;
 }
 
-void drawUTF8Text(char *drawable, int x, int y, App* app) {
+void drawUTF8Text(Message * message, int x, int y, App* app) {
 	int truex = (x * TILE_WIDTH);
-	int truey = (y * TILE_HEIGHT);
+	int truey = (y * TILE_HEIGHT ) - LOG_TILE_HEIGHT + (message->messageIndex * LOG_TILE_PADDING);
 
-	int strW = strlen(drawable) * TILE_WIDTH;
+	int strW = strlen(message->messageText) * LOG_TILE_WIDTH;
 
 	SDL_Color color = {255, 255, 255, 255};
-	SDL_Surface *sur = TTF_RenderUTF8_Solid(app->tileset, drawable, color);
-	SDL_Rect rect = { truex, truey, strW / 2, TILE_HEIGHT / 2 };
+	SDL_Surface *sur = TTF_RenderUTF8_Solid(app->tileset, message->messageText, color);
+	SDL_Rect rect = { truex, truey, strW, LOG_TILE_HEIGHT };
 	SDL_Texture *tex = SDL_CreateTextureFromSurface(app->renderer, sur);
 	SDL_FreeSurface(sur);
 

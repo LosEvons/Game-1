@@ -12,7 +12,10 @@ int main(int argc, char* argv[]) {
 	Level * level = newCellarLevel();
 
 	messageLog = initMessageLog();
-	addMessage(messageLog, DATA, "Test 2");
+	addMessage(messageLog, DATA, "Test 1");
+	addMessage(messageLog, DATA, "TEST 2");
+	//addMessage(messageLog, DATA, "Test 3");
+	//addMessage(messageLog, DATA, "TEST 4");
 
 	//addMessage(&messageLog, DATA, "Test Message!\n");
 

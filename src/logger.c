@@ -70,6 +70,6 @@ void drawMessages(MessageLog * messageLog, App * app){
 
 	for (i = 0; i < messageLog->logLength; i++){
 		Message * drawable = getMessageFromIndex(messageLog, i);
-		drawUTF8Text(drawable->messageText, logPanel.x + 1, logPanel.y + 1 + i, app);
+		drawUTF8Text(drawable, logPanel.x + 1, logPanel.y + 1, app);
 	}
 }
