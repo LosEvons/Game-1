@@ -2,74 +2,46 @@
 
 extern Panel logPanel;
 
-MessageLog * initMessageLog(){
-	MessageLog * newMessageLog = malloc(sizeof(MessageLog));
-	atexit_add(newMessageLog);
+void insertFirst(MessageLog * messageLog, int key, char data[51]){
+	Message * link = (Message *) malloc(sizeof(Message));
+	atexit_add(link);
 
-	newMessageLog->logLength = 0;
-	newMessageLog->messageTreshold = DATA;
+	link->key = key;
 
-	Message * newMessage = malloc(sizeof(Message));
-	atexit_add(newMessage);
+	strcpy(link->text, data);
 
-	newMessage->messageLevel = DATA;
+	link->next = messageLog->head;
 
-	char messageText[] = "test";
-	strcpy(newMessage->messageText, messageText);
-
-	newMessageLog->logLength++;
-	newMessage->messageIndex = newMessageLog->logLength;
-	newMessageLog->messages = newMessage;
-
-	return newMessageLog;
+	messageLog->head = link;
 }
 
-void addMessage(MessageLog * messageLog, enum MessageLevel messageLevel, char messageText[]){
-	Message * newMessage = malloc(sizeof(Message));
-	atexit_add(newMessage);
-
-	newMessage->messageLevel = messageLevel;
-
-	strcpy(newMessage->messageText, messageText);
-
-	Message * previousMessage = getMessageFromIndex(messageLog, messageLog->logLength);
-	newMessage->previousMessage = previousMessage;
-	previousMessage->nextMessage = newMessage;
-
-	newMessage->messageIndex = messageLog->logLength + 1;
-	messageLog->logLength++;
+bool isEmpty(MessageLog * messageLog){
+	return messageLog->head == NULL;
 }
 
-Message * getMessageFromIndex(MessageLog * messageLog, int index){
-	if (index < messageLog->logLength){
-		Message * desiredMessage = messageLog->messages;
+Message * find(MessageLog * messageLog, int key){
+	Message * current = messageLog->head;
 
-		while(desiredMessage->messageIndex < index)
-		{
-			desiredMessage = scrollForwardMessageLog(desiredMessage);
+	if (messageLog->head == NULL){
+		return NULL;
+	}
+
+	while(current->key != key){
+		if (current->next == NULL){
+			return NULL;
+		} else {
+			current = current->next;
 		}
-
-		return desiredMessage;
 	}
-	else {
-		printf("Reached over message log index.\n");
-		return messageLog->messages;
-	}
-}
 
-Message * scrollBackMessageLog(Message * message){
-	return message->previousMessage;
-}
-
-Message * scrollForwardMessageLog(Message * message){
-	return message->nextMessage;
+	return current;
 }
 
 void drawMessages(MessageLog * messageLog, App * app){
-	int i;
+	Message * ptr = messageLog->head;
 
-	for (i = 0; i < messageLog->logLength; i++){
-		Message * drawable = getMessageFromIndex(messageLog, i);
-		drawUTF8Text(drawable, logPanel.x + 1, logPanel.y + 1, app);
+	while(ptr != NULL){
+		drawUTF8Text(ptr, logPanel.x + 1, logPanel.y + 1, app);
+		ptr = ptr->next;
 	}
 }

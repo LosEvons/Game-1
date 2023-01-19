@@ -3,6 +3,7 @@
 
 // Standard libraries
 #include <stdio.h>
+#include <stdbool.h>
 #include <time.h>
 // SDL libraries
 #include "SDL.h"
@@ -37,12 +38,11 @@ void atexit_add(void *data);
 void clean(void);
 
 /* logger.c */
-MessageLog * initMessageLog();
-void addMessage(MessageLog * messageLog, enum MessageLevel messageLevel, char* messageText);
-Message * getMessageFromIndex(MessageLog * messageLog, int index);
-Message * scrollBackMessageLog(Message * message);
-Message * scrollForwardMessageLog(Message * message);
+void insertFirst(MessageLog * messageLog, int key, char data[]);
+bool isEmpty(MessageLog * messageLog);
+Message * find(MessageLog * messaegLog, int key);
 void drawMessages(MessageLog * messageLog, App * app);
+
 
 /* initializeSDL.c */
 App * initSDL(); // Initializes base SDL functions (SDL_Init, TTF_Init). Used at the start of a program.
@@ -57,7 +57,7 @@ int doInput(Player * player);
 
 /* draw.c */
 void prepareScene(App* app);
-int presentScene(App* app, Level * level);
+int presentScene(App* app, Level * level, MessageLog * messageLog);
 void drawGlyph(int drawable, int x, int y, App* app);
 void drawUTF8(char* drawable, int x, int y, App* app);
 void drawUTF8Text(Message * message, int x, int y, App* app);

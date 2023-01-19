@@ -13,7 +13,7 @@
 
 #define LOG_TILE_SIZE		(TILE_SIZE / 2)
 #define LOG_TILE_HEIGHT		LOG_TILE_SIZE
-#define LOG_TILE_PADDING	(TILE_SIZE / 3)
+#define LOG_TILE_PADDING	((LOG_TILE_HEIGHT) + (LOG_TILE_SIZE / 5))
 #define LOG_TILE_WIDTH 		(LOG_TILE_SIZE / 2)
 
 /* Virtual Screen */

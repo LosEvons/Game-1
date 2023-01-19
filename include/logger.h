@@ -8,17 +8,16 @@ enum MessageLevel {
 };
 
 typedef struct Message{
-	struct Message * nextMessage;
-	struct Message * previousMessage;
-	int messageIndex;
-	enum MessageLevel messageLevel;
-	char messageText[51];
+	char text[51];
+	int key;
+	struct Message * next;
 } Message;
 
+
 typedef struct MessageLog {
-	enum MessageLevel messageTreshold;
-	Message * messages;
-	int logLength;
+	enum MessageLevel treshold;
+	Message *head;
+	Message *current;
 } MessageLog;
 
 #endif

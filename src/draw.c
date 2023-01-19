@@ -5,15 +5,12 @@ extern Panel leftPanel;
 extern Panel rightPanel;
 extern Panel mapBorder;
 
-extern MessageLog * messageLog;
-
-
 void prepareScene(App* app){
 	SDL_SetRenderDrawColor(app->renderer, 50, 50, 50, 255);
 	SDL_RenderClear(app->renderer);
 }
 
-int presentScene(App* app, Level * level){
+int presentScene(App* app, Level * level, MessageLog * messageLog){
 	drawPanel(app, logPanel);
 	drawMessages(messageLog, app);
 	drawPanel(app, leftPanel);
@@ -27,12 +24,12 @@ int presentScene(App* app, Level * level){
 
 void drawUTF8Text(Message * message, int x, int y, App* app) {
 	int truex = (x * TILE_WIDTH);
-	int truey = (y * TILE_HEIGHT ) - LOG_TILE_HEIGHT + (message->messageIndex * LOG_TILE_PADDING);
+	int truey = (y * TILE_HEIGHT ) - LOG_TILE_HEIGHT + (message->key * LOG_TILE_PADDING);
 
-	int strW = strlen(message->messageText) * LOG_TILE_WIDTH;
+	int strW = strlen(message->text) * LOG_TILE_WIDTH;
 
 	SDL_Color color = {255, 255, 255, 255};
-	SDL_Surface *sur = TTF_RenderUTF8_Solid(app->tileset, message->messageText, color);
+	SDL_Surface *sur = TTF_RenderUTF8_Solid(app->tileset, message->text, color);
 	SDL_Rect rect = { truex, truey, strW, LOG_TILE_HEIGHT };
 	SDL_Texture *tex = SDL_CreateTextureFromSurface(app->renderer, sur);
 	SDL_FreeSurface(sur);

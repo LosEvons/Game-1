@@ -9,13 +9,13 @@ SOURCES = ${SRCDIR}*.c
 SDLINC = ./SDL2/include/SDL2
 SDLLIB = ./SDL2/lib/
 
-all:	rogue
+all:	debug
 
-rogue:	${SOURCES}
+build:	${SOURCES}
 	${CC} ${SOURCES} ${CFLAGS} -o main
 
 debug: ${SOURCES}
-	${CC} -DDEBUG ${SOURCES} ${CFLAGS} -o main
+	${CC} -g ${SOURCES} ${CFLAGS} -o main
 
 run:
 	./main
