@@ -22,9 +22,9 @@ int presentScene(App* app, Level * level, MessageLog * messageLog){
 	return 1;
 }
 
-void drawUTF8Text(Message * message, int x, int y, App* app) {
+void drawUTF8Log(Message * message, int x, int y, int adjustedIndex, App* app) {
 	int truex = (x * TILE_WIDTH);
-	int truey = (y * TILE_HEIGHT ) - LOG_TILE_HEIGHT + (message->key * LOG_TILE_PADDING);
+	int truey = (y * TILE_HEIGHT) - LOG_TILE_HEIGHT - (adjustedIndex * LOG_TILE_PADDING);
 
 	int strW = strlen(message->text) * LOG_TILE_WIDTH;
 

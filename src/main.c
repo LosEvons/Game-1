@@ -6,20 +6,17 @@ int main(int argc, char* argv[]) {
 
 	srand(time(NULL));	// Random seed from time
 
+	MessageLog * messageLog = malloc(sizeof(MessageLog));
+	atexit_add(messageLog);	
+
 	App * app = initSDL();
 	Level * level = newCellarLevel();
 
-	MessageLog * messageLog = malloc(sizeof(MessageLog));
-	atexit_add(messageLog);
-
 	messageLog->head = NULL;
 	messageLog->current = NULL;
-	messageLog->treshold = DATA;
+	messageLog->treshold = SYSTEM_MESSAGE;
 
-	insertFirst(messageLog, 1, "test1");
-	insertFirst(messageLog, 2, "TEST2");
-	insertFirst(messageLog, 3, "test3");
-	insertFirst(messageLog, 4, "TEST4");
+	addLog(messageLog, "Logger initialized.", SYSTEM_MESSAGE);
 
 	int running = 1;
 	int drawn = 0;

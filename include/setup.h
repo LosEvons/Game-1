@@ -38,8 +38,10 @@ void atexit_add(void *data);
 void clean(void);
 
 /* logger.c */
-void insertFirst(MessageLog * messageLog, int key, char data[]);
+void insertFirst(MessageLog * messageLog, int key, char data[], enum MessageLevel level);
+void addLog(MessageLog * messageLog, char data[], enum MessageLevel level);
 bool isEmpty(MessageLog * messageLog);
+int getLogLength(MessageLog * messageLog);
 Message * find(MessageLog * messaegLog, int key);
 void drawMessages(MessageLog * messageLog, App * app);
 
@@ -60,7 +62,7 @@ void prepareScene(App* app);
 int presentScene(App* app, Level * level, MessageLog * messageLog);
 void drawGlyph(int drawable, int x, int y, App* app);
 void drawUTF8(char* drawable, int x, int y, App* app);
-void drawUTF8Text(Message * message, int x, int y, App* app);
+void drawUTF8Log(Message * message, int x, int y, int adjustedIndex, App* app);
 void gridUTF8(Graphic * drawable, int x, int y, App* app);
 void freeDrawUTF8(char* drawable, int x, int y, App* app);
 

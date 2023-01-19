@@ -84,6 +84,7 @@ void carveRooms(Level * level){
 
 Room ** generateRooms(Level * level){
 	int i;
+	int rejectedRooms = 0;
 	Room ** rooms = malloc(sizeof(Room) * MAX_ROOMS);
 	atexit_add(rooms);
 
@@ -97,6 +98,7 @@ Room ** generateRooms(Level * level){
 
 		int overlapped = detectRoomOverlap(rooms, gendRoom, i);
 		if (overlapped == 1){
+			rejectedRooms++;
 			i--;
 			continue;
 		}
@@ -105,6 +107,11 @@ Room ** generateRooms(Level * level){
 			rooms[i] = gendRoom;
 	}
 
+	/*
+	char logText[51];
+	snprintf(logText, sizeof logText, "%d rooms rejected.", rejectedRooms);
+	addLog(messageLog, logText, DATA);
+	*/
 	return rooms;
 }
 

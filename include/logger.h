@@ -4,11 +4,12 @@
 /* Data */
 
 enum MessageLevel {
-	MUTED = 0, DATA = 1, ERROR = 2
+	MUTED = 0, ERROR = 1, SYSTEM_MESSAGE = 2, DATA = 3
 };
 
 typedef struct Message{
 	char text[51];
+	enum MessageLevel level;
 	int key;
 	struct Message * next;
 } Message;
