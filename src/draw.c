@@ -28,8 +28,30 @@ void drawUTF8Log(Message * message, int x, int y, int adjustedIndex, App* app) {
 
 	int strW = strlen(message->text) * LOG_TILE_WIDTH;
 
-	SDL_Color color = {255, 255, 255, 255};
-	SDL_Surface *sur = TTF_RenderUTF8_Solid(app->tileset, message->text, color);
+	int r, g, b, a;
+
+	switch(message->level){
+		case MUTED:
+			r = 255; g = 255; b = 255; a = 100;
+			break;
+		case ERROR:
+			r = 255; g = 0; b = 0; a = 255;
+			break;
+		case SYSTEM_MESSAGE:
+			r = 0; g = 255; b = 0; a = 255;
+			break;
+		case DATA:
+			r = 200; g = 200; b = 255; a = 255;
+			break;
+
+		default:
+			r = 255; g = 255; b = 255; a = 255;
+			break;
+	}
+	
+	SDL_Color color = {r, g, b, a};
+
+	SDL_Surface *sur = TTF_RenderUTF8_Blended(app->tileset, message->text, color);
 	SDL_Rect rect = { truex, truey, strW, LOG_TILE_HEIGHT };
 	SDL_Texture *tex = SDL_CreateTextureFromSurface(app->renderer, sur);
 	SDL_FreeSurface(sur);
