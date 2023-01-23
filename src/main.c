@@ -1,22 +1,21 @@
 #include "setup.h"
 
+extern MessageLog messageLog;
+
 int main(int argc, char* argv[]) {
 
 	atexit( clean );
 
 	srand(time(NULL));	// Random seed from time
 
-	MessageLog * messageLog = malloc(sizeof(MessageLog));
-	atexit_add(messageLog);	
-
 	App * app = initSDL();
 	Level * level = newCellarLevel();
 
-	messageLog->head = NULL;
-	messageLog->current = NULL;
-	messageLog->treshold = SYSTEM_MESSAGE;
+	messageLog.head = NULL;
+	messageLog.current = NULL;
+	messageLog.treshold = SYSTEM_MESSAGE;
 
-	addLog(messageLog, "Logger initialized.", SYSTEM_MESSAGE);
+	addLog("Logger initialized.", SYSTEM_MESSAGE);
 
 	int running = 1;
 	int drawn = 0;
@@ -27,7 +26,7 @@ int main(int argc, char* argv[]) {
 
 		if (doInput(level->player)) { drawn = 0; }
 
-		if (!drawn) { drawn = presentScene(app, level, messageLog); }
+		if (!drawn) { drawn = presentScene(app, level); }
 
 		SDL_Delay(16);
 	}

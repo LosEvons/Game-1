@@ -5,14 +5,16 @@ extern Panel leftPanel;
 extern Panel rightPanel;
 extern Panel mapBorder;
 
+extern MessageLog messageLog;
+
 void prepareScene(App* app){
 	SDL_SetRenderDrawColor(app->renderer, 50, 50, 50, 255);
 	SDL_RenderClear(app->renderer);
 }
 
-int presentScene(App* app, Level * level, MessageLog * messageLog){
+int presentScene(App* app, Level * level){
 	drawPanel(app, logPanel);
-	drawMessages(messageLog, app);
+	drawMessages(app);
 	drawPanel(app, leftPanel);
 	drawPanel(app, rightPanel);
 	drawPanel(app, mapBorder);

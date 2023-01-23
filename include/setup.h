@@ -20,31 +20,21 @@
 #include "gamemap.h"
 // UI
 #include "ui.h"
-
-/* Structs */
-typedef struct App {
-	SDL_Window* window;
-	SDL_Renderer* renderer;
-	TTF_Font* tileset;
-} App;
-
-typedef struct Position {
-	int x;
-	int y;
-} Position;
+// Structs
+#include "structs.h"
+#include "globals.h"
 
 /* memory_utils.c */
 void atexit_add(void *data); // Add item to list that is cleaned at the end of the program
 void clean(void); // Clean (free) all items in list
 
 /* logger.c */
-void insertFirst(MessageLog * messageLog, int key, char data[], enum MessageLevel level); // Add message to index
-void addLog(MessageLog * messageLog, char data[], enum MessageLevel level); // Add message to end of list
-bool isEmpty(MessageLog * messageLog); // Checks if message log is empty
-int getLogLength(MessageLog * messageLog); // Get number of messages in message log
-Message * find(MessageLog * messaegLog, int key); // Find message by index
-void drawMessages(MessageLog * messageLog, App * app); // Draw messages in log screen
-
+void insertFirst(int key, char data[], enum MessageLevel level); // Add message to index
+void addLog(char data[], enum MessageLevel level); // Add message to end of list
+bool isEmpty(); // Checks if message log is empty
+int getLogLength(); // Get number of messages in message log
+Message * find(int key); // Find message by index
+void drawMessages(App * app); // Draw messages in log screen
 
 /* initializeSDL.c */
 App * initSDL(); // Initializes base SDL functions (SDL_Init, TTF_Init). Used at the start of a program.
@@ -59,7 +49,7 @@ int doInput(Player * player); // Handle player input (currently always, in the f
 
 /* draw.c */
 void prepareScene(App* app); // Operations done before scene rendering (slightly odd function, but occasionally useful)
-int presentScene(App* app, Level * level, MessageLog * messageLog); // Render all elements of scene (no specific order as of 19/1/23)
+int presentScene(App* app, Level * level); // Render all elements of scene (no specific order as of 19/1/23)
 void drawGlyph(int drawable, int x, int y, App* app); // Old function used to draw single byte ASCII characters
 void drawUTF8(char* drawable, int x, int y, App* app); // Function to draw character on screen using our virtual coordinate grid
 void drawUTF8Log(Message * message, int x, int y, int adjustedIndex, App* app); // A variant drawing function used to draw log messages
