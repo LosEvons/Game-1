@@ -10,17 +10,6 @@
 #include "SDL_ttf.h"
 // Own header files
 #include "definitions.h"
-// Logger
-#include "logger.h"
-// Graphic
-#include "graphic.h"
-// Entities
-#include "entity.h"
-// Map
-#include "gamemap.h"
-// UI
-#include "ui.h"
-// Structs
 #include "structs.h"
 #include "globals.h"
 
@@ -45,11 +34,11 @@ TTF_Font* loadTileset(); // My own extension to SDL:s own tileset load function 
 void unloadTileset(); // Unloads the font/tileset. Used at the end of a program.
 
 /* handleInput.c */
-int doInput(Player * player); // Handle player input (currently always, in the future will be divided by game states)
+void doInput(Player * player); // Handle player input (currently always, in the future will be divided by game states)
 
 /* draw.c */
 void prepareScene(App* app); // Operations done before scene rendering (slightly odd function, but occasionally useful)
-int presentScene(App* app, Level * level); // Render all elements of scene (no specific order as of 19/1/23)
+void presentScene(App* app, Level * level); // Render all elements of scene (no specific order as of 19/1/23)
 void drawGlyph(int drawable, int x, int y, App* app); // Old function used to draw single byte ASCII characters
 void drawUTF8(char* drawable, int x, int y, App* app); // Function to draw character on screen using our virtual coordinate grid
 void drawUTF8Log(Message * message, int x, int y, int adjustedIndex, App* app); // A variant drawing function used to draw log messages

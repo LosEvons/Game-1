@@ -1,11 +1,10 @@
 #include "setup.h"
 
-int doInput(Player * player){
+void doInput(Player * player){
 	SDL_Event event;
 
 	while (SDL_PollEvent(&event)) {
 		switch(event.type){
-
 		case SDL_QUIT:
 			exit(0);	
 			break;
@@ -14,19 +13,19 @@ int doInput(Player * player){
 			switch(event.key.keysym.sym){
 			case SDLK_UP:
 				movePlayerFrom(player, 0, -1);
-				return 1;
+				gameState = PROCESSING;
 				break;
 			case SDLK_DOWN:
 				movePlayerFrom(player, 0, 1);
-				return 1;
+				gameState = PROCESSING;
 				break;
 			case SDLK_LEFT:
 				movePlayerFrom(player, -1, 0);
-				return 1;
+				gameState = PROCESSING;
 				break;
 			case SDLK_RIGHT:
 				movePlayerFrom(player, 1, 0);
-				return 1;
+				gameState = PROCESSING;
 				break;
 
 			case SDLK_q:
@@ -34,15 +33,11 @@ int doInput(Player * player){
 				break;
 
 			default:
-				return 0;
 				break;
 			}
 
 		default:
-			return 0;
 			break;
 		}
 	}
-
-	return 0;
 }

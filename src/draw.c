@@ -5,14 +5,12 @@ extern Panel leftPanel;
 extern Panel rightPanel;
 extern Panel mapBorder;
 
-extern MessageLog messageLog;
-
 void prepareScene(App* app){
 	SDL_SetRenderDrawColor(app->renderer, 50, 50, 50, 255);
 	SDL_RenderClear(app->renderer);
 }
 
-int presentScene(App* app, Level * level){
+void presentScene(App* app, Level * level){
 	drawPanel(app, logPanel);
 	drawMessages(app);
 	drawPanel(app, leftPanel);
@@ -21,7 +19,7 @@ int presentScene(App* app, Level * level){
 	drawLevel(level, app);
 	SDL_RenderPresent(app->renderer);
 
-	return 1;
+	gameState = PLAYER_TURN;
 }
 
 void drawUTF8Log(Message * message, int x, int y, int adjustedIndex, App* app) {

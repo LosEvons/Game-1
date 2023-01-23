@@ -4,6 +4,11 @@
 // OTHERWISE SDL MODULES HAVE NO DEFINITIONS INSIDE HERE
 // Probably fixable in some way
 
+/* GameState */
+enum GameState {
+	PLAYER_TURN = 1, PROCESSING = 2,
+};
+
 /* App */
 typedef struct App {
 	SDL_Window* window;
@@ -50,6 +55,10 @@ typedef struct Level {
 } Level;
 
 /* logger.h */
+enum MessageLevel {
+	MUTED = 0, ERROR = 1, SYSTEM_MESSAGE = 2, DATA = 3
+};
+
 typedef struct Message{
 	char text[51];
 	enum MessageLevel level;

@@ -3,6 +3,7 @@
 
 #include "setup.h"
 
-extern MessageLog messageLog;
+extern enum GameState gameState;
+extern struct MessageLog messageLog;
 
 #endif

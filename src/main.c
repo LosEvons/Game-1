@@ -1,6 +1,6 @@
 #include "setup.h"
 
-extern MessageLog messageLog;
+enum GameState gameState = PROCESSING;
 
 int main(int argc, char* argv[]) {
 
@@ -18,15 +18,21 @@ int main(int argc, char* argv[]) {
 	addLog("Logger initialized.", SYSTEM_MESSAGE);
 
 	int running = 1;
-	int drawn = 0;
+	//int drawn = 0;
 
 	while (running)
 	{
-		prepareScene(app);
+		switch (gameState){
+			case PLAYER_TURN:
+				doInput(level->player);
+				break;
+			case PROCESSING:
+				prepareScene(app);
+				presentScene(app, level);
 
-		if (doInput(level->player)) { drawn = 0; }
-
-		if (!drawn) { drawn = presentScene(app, level); }
+			default:
+				break;
+		}
 
 		SDL_Delay(16);
 	}
