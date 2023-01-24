@@ -79,10 +79,4 @@ typedef struct Panel {
 	int h;
 } Panel;
 
-/* Render Queue */
-typedef struct RenderEntry {
-	int x;
-	int y;
-} RenderEntry;
-
 #endif

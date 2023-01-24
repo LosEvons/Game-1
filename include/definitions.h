@@ -5,6 +5,8 @@
 /* Screen */
 #define SCREEN_WIDTH 	1280
 #define SCREEN_HEIGHT 	720
+#define SCREEN_FPS		60
+#define SCREEN_TICKS_PER_FRAME	(1000 / SCREEN_FPS)
 
 /* Tiles */
 #define TILE_SIZE 	 	32

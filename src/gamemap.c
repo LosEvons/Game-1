@@ -39,6 +39,23 @@ Level * newCellarLevel(){
 	return newLevel;
 }
 
+Level * newCavernLevel(){
+	Level * newLevel;
+	newLevel = malloc(sizeof(Level));
+	atexit_add(newLevel);
+
+	newLevel->tiles = initWallTiles();
+
+	newLevel->rooms = NULL;
+
+	releaseHulks(newLevel);
+
+	Position playerStartPos = { 10, 10 };
+	newLevel->player = newPlayer(playerStartPos.x, playerStartPos.y, "@", newLevel);
+
+	return newLevel;
+}
+
 Tile *** initFloorTiles(){
 	int x, y;
 	Tile *** tiles;

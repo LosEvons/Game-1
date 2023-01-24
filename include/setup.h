@@ -66,6 +66,7 @@ void freeTile(Tile * tile); // A function to free a tile mid program (by default
 /* gamemap.c */
 Level * newLevel(); // Create a new level/map filled with floor tiles (possibly non-functional as of 19/1/23) 
 Level * newCellarLevel(); // Create a new level/map filled with wall tiles
+Level * newCavernLevel(); // Create a new level/map filled with wall tiles and carve random paths through it.
 void freeLevel(Level * level); // A function to free a level mid program (by default taken care of by memory_utils.c:clean
 Tile *** initFloorTiles(); // Fills level->tiles with floor tiles
 Tile *** initWallTiles(); // Fills level->tiles with wall tiles
@@ -78,9 +79,13 @@ Room * generateRoom(); // Generates a random room using parameters defined in de
 void carveRoom(Level * level, Room * room); // Changes all tiles within a rooms' coordinates to floor tiles
 void carveRooms(Level * level); // Repeats carveRoom for each room in Level
 Room ** generateRooms(); // Repeats generateRoom until room count is equal to definitions.h:MAX_ROOMS
-
 void carveHallways(Level * level); // Carves a L-shaped hallway between the centers of two rooms (repeats for each room in Level->rooms)
 void carveVerticalHallway(Level * level, int startY, int endY, int baseX); // Changes all tiles in vertical portion of hallway to floor tiles
 void carveHorizontalHallway(Level * level, int startX, int endX, int baseY); // Changes all tiles in horizontal portion of hallway to floor tiles
+
+/* procgen_umberhulk.c */
+void releaseHulks(Level * level);
+void castUmberhulk(Level * level);
+void moveHulk(Position * currentPosition);
 
 #endif

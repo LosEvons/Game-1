@@ -9,7 +9,8 @@ int main(int argc, char* argv[]) {
 	srand(time(NULL));	// Random seed from time
 
 	App * app = initSDL();
-	Level * level = newCellarLevel();
+	//Level * level = newCellarLevel();
+	Level * level = newCavernLevel();
 
 	messageLog.head = NULL;
 	messageLog.treshold = SYSTEM_MESSAGE;
