@@ -11,8 +11,6 @@ Player * newPlayer(int x, int y, char* glyph, Level * level){
 	player->position->x = x;
 	player->position->y = y;
 
-	player->graphic = malloc(sizeof(Graphic));
-	atexit_add(player->graphic);
 	player->graphic = newGraphic(glyph, COLOR_RED);
 
 	player->level = malloc(sizeof(Level));
@@ -37,18 +35,11 @@ void movePlayerFrom(Player * player, int dx, int dy){
 	else {
 		player->position->x += (player->level->tiles[newy][newx]->blocking == 0) ? dx : 0;
 		player->position->y += (player->level->tiles[newy][newx]->blocking == 0) ? dy : 0;
-	}
 
-	/*
-
-	if ((newx >= 0) && (newx < LEVEL_WIDTH)){
-		player->x += (&player->level->tiles[newy][newx]->blocking == 0) ? dx : 0;
+		gameState = PROCESSING;
 	}
-
-	if ((newy >= 0) && (newy < LEVEL_HEIGHT)){
-		player->y += (&player->level->tiles[newy][newx]->blocking == 0) ? dy : 0;
-	}
-	*/
 }
 
-void drawPlayer(Player * player, App* app){	gridUTF8(player->graphic, player->position->x, player->position->y, app); }
+void drawPlayer(Player * player, App* app){
+	gridUTF8(player->graphic, player->position->x, player->position->y, app);
+}

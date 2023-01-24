@@ -42,7 +42,7 @@ void presentScene(App* app, Level * level); // Render all elements of scene (no 
 void drawGlyph(int drawable, int x, int y, App* app); // Old function used to draw single byte ASCII characters
 void drawUTF8(char* drawable, int x, int y, App* app); // Function to draw character on screen using our virtual coordinate grid
 void drawUTF8Log(Message * message, int x, int y, int adjustedIndex, App* app); // A variant drawing function used to draw log messages
-void gridUTF8(Graphic * drawable, int x, int y, App* app); // A variant drawing function used to draw map tiles
+void gridUTF8(Graphic  drawable, int x, int y, App* app); // A variant drawing function used to draw map tiles
 void freeDrawUTF8(char* drawable, int x, int y, App* app); // A variant drawing function independent of the virtual coordinate grid
 
 /* ui.c */
@@ -56,7 +56,7 @@ void movePlayerFrom(Player* player, int dx, int dy); // Moves player in relation
 void drawPlayer(Player* player, App* app); // Draw player on screen
 
 /* graphic.c */
-Graphic * newGraphic(char * nglyph, SDL_Color color); // Create a new graphic used in drawing
+Graphic newGraphic(char * nglyph, SDL_Color color); // Create a new graphic used in drawing
 void freeGraphic(Graphic * graphic); // A function to free a graphic mid program (by default taken care of by memory_utils.c:clean
 
 /* tile.c */

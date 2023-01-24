@@ -10,8 +10,6 @@ Tile * newTile(char* glyph, SDL_Color color, int blocking){
 	newTile = malloc(sizeof(Tile));
 	atexit_add(newTile);
 
-	newTile->graphic = malloc(sizeof(Graphic *));
-	atexit_add(newTile->graphic);
 	newTile->graphic = newGraphic(glyph, color);
 
 	newTile->blocking = blocking;
@@ -20,6 +18,5 @@ Tile * newTile(char* glyph, SDL_Color color, int blocking){
 }
 
 void freeTile(Tile * tile){
-	freeGraphic(tile->graphic);
 	free(tile);
 }

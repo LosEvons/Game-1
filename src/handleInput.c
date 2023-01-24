@@ -13,19 +13,15 @@ void doInput(Player * player){
 			switch(event.key.keysym.sym){
 			case SDLK_UP:
 				movePlayerFrom(player, 0, -1);
-				gameState = PROCESSING;
 				break;
 			case SDLK_DOWN:
 				movePlayerFrom(player, 0, 1);
-				gameState = PROCESSING;
 				break;
 			case SDLK_LEFT:
 				movePlayerFrom(player, -1, 0);
-				gameState = PROCESSING;
 				break;
 			case SDLK_RIGHT:
 				movePlayerFrom(player, 1, 0);
-				gameState = PROCESSING;
 				break;
 
 			case SDLK_q:

@@ -12,13 +12,11 @@ int main(int argc, char* argv[]) {
 	Level * level = newCellarLevel();
 
 	messageLog.head = NULL;
-	messageLog.current = NULL;
 	messageLog.treshold = SYSTEM_MESSAGE;
 
 	addLog("Logger initialized.", SYSTEM_MESSAGE);
 
 	int running = 1;
-	//int drawn = 0;
 
 	while (running)
 	{

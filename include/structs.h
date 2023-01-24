@@ -31,13 +31,13 @@ typedef struct Graphic {
 /* player.h */
 typedef struct Player {
 	struct Position * position;
-	struct Graphic * graphic;
+	struct Graphic graphic;
 	struct Level * level;
 } Player;
 
 /* gamemap.h */
 typedef struct Tile {
-	struct Graphic * graphic;
+	struct Graphic graphic;
 	int blocking;
 } Tile;
 
@@ -69,7 +69,6 @@ typedef struct Message{
 typedef struct MessageLog {
 	enum MessageLevel treshold;
 	struct Message *head;
-	struct Message *current;
 } MessageLog;
 
 /* ui.h */
@@ -79,5 +78,11 @@ typedef struct Panel {
 	int w;
 	int h;
 } Panel;
+
+/* Render Queue */
+typedef struct RenderEntry {
+	int x;
+	int y;
+} RenderEntry;
 
 #endif
