@@ -29,6 +29,7 @@ typedef struct Graphic {
 } Graphic;
 
 /* player.h */
+#define PLAYER_FOV 4
 typedef struct Player {
 	struct Position * position;
 	struct Graphic graphic;

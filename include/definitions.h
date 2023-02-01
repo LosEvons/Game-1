@@ -10,8 +10,8 @@
 
 /* Tiles */
 #define TILE_SIZE 	 	32
-#define TILE_HEIGHT 	TILE_SIZE
-#define TILE_WIDTH 		(TILE_SIZE / 2)
+#define TILE_HEIGHT 		TILE_SIZE
+#define TILE_WIDTH 		TILE_SIZE // (TILE_SIZE / 2)
 
 #define LOG_TILE_SIZE		(TILE_SIZE / 2)
 #define LOG_TILE_HEIGHT		LOG_TILE_SIZE

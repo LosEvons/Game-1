@@ -97,10 +97,18 @@ void drawLevel(Level * level, App* app) {
 
 	for (y = 0; y < LEVEL_HEIGHT; y++){
 		for (x = 0; x < LEVEL_WIDTH; x++){
-			if ((x == level->player->position->x) && (y == level->player->position->y))
-				drawPlayer(level->player, app);
-			else
-				gridUTF8(level->tiles[y][x]->graphic, x, y, app);
+			if (
+				(x >= (level->player->position->x - PLAYER_FOV)) &&
+				(x <= (level->player->position->x + PLAYER_FOV)) &&
+				(y >= (level->player->position->y - PLAYER_FOV)) &&
+				(y <= (level->player->position->y + PLAYER_FOV))
+				){
+				if ((x == level->player->position->x) && (y == level->player->position->y))
+					drawPlayer(level->player, app);
+				else
+					gridUTF8(level->tiles[y][x]->graphic, x, y, app);
+			}
+			
 		}
 	}
 }
