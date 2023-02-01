@@ -11,11 +11,14 @@ SDLLIB = ./SDL2/lib/
 
 all:	build
 
-build:	${SOURCES}
+build: ${SOURCES}
 	${CC} ${SOURCES} ${CFLAGS} -o main
 
 debug: ${SOURCES}
-	${CC} -g -Wextra ${SOURCES} ${CFLAGS} -o main
+	${CC} -O0 -g -Wextra ${SOURCES} ${CFLAGS} -o main
+
+release: ${SOURCES}
+	${CC} -O2 -DDONT_USE_VOL ${SOURCES} ${CFLAGS} -o main
 
 run:
 	./main

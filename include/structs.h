@@ -6,7 +6,7 @@
 
 /* GameState */
 enum GameState {
-	PLAYER_TURN = 1, PROCESSING = 2,
+	PLAYER_TURN, PROCESSING,
 };
 
 /* App */

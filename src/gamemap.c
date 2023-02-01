@@ -3,6 +3,8 @@
 extern const SDL_Color COLOR_GREY;
 extern const SDL_Color COLOR_WHITE;
 
+extern const Position prevPos;
+
 Panel mapBorder = {
 	LEVEL_X_OFFSET - 1, LEVEL_Y_OFFSET - 1,
 	LEVEL_WIDTH + 2, LEVEL_HEIGHT + 2,
@@ -50,7 +52,7 @@ Level * newCavernLevel(){
 
 	releaseHulks(newLevel);
 
-	Position playerStartPos = { 10, 10 };
+	Position playerStartPos = prevPos;
 	newLevel->player = newPlayer(playerStartPos.x, playerStartPos.y, "@", newLevel);
 
 	return newLevel;

@@ -2,8 +2,10 @@
 
 extern const SDL_Color COLOR_GREY;
 
-const unsigned int umberhulkAge = 15;
-const unsigned int umberhulkPopulation = 25;
+const unsigned int umberhulkAge = 150;
+const unsigned int umberhulkPopulation = 10;
+
+Position prevPos = { -1, -1 };
 
 void releaseHulks(Level * level){
 	int i;
@@ -14,23 +16,41 @@ void releaseHulks(Level * level){
 
 void castUmberhulk(Level * level){
 	int i;
+	Position currentPosition = {-1, -1 };
 
-	int startx = rand() % (LEVEL_WIDTH - 2) + 1;
-	int starty = rand() % (LEVEL_HEIGHT - 2) + 1;
-
-	Position currentPosition = { startx, starty };
+	if (prevPos.x < 0 || prevPos.y < 0){
+		int startx = rand() % (LEVEL_WIDTH - 2) + 1;
+		int starty = rand() % (LEVEL_HEIGHT - 2) + 1;
+		currentPosition.x = startx;
+		currentPosition.y = starty;
+	}
+	else{
+		currentPosition = prevPos;
+	}
+	
 
 	for (i = 0; i < umberhulkAge; i++){
 		level->tiles[currentPosition.y][currentPosition.x] = newTile(".", COLOR_GREY, 0);
 		moveHulk(&currentPosition);
 	}
+
+	prevPos = currentPosition;
+
 }
 
 void moveHulk(Position * currentPosition){
-	int dx = rand() % 3 - 1;
-	int dy = rand() % 3 - 1;
-	int newx = currentPosition->x + dx;
-	int newy = currentPosition->y + dy;
+	int dm = rand() % 3 - 1; // Movement amount
+	int dd = rand() % 2; // Direction
+	int newx, newy;
+
+	if (dd < 1){ // Move on X axis
+		newx = currentPosition->x + dm;
+		newy = currentPosition->y;
+	}
+	else{ // Move on Y axis
+		newx = currentPosition->x;
+		newy = currentPosition->y + dm;
+	}
 
 	if ((newx < 0) || (newx >= LEVEL_WIDTH) || (newy < 0) || (newy >= LEVEL_HEIGHT)){
 		return;
