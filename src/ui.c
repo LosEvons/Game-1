@@ -14,6 +14,11 @@ Panel rightPanel = {
 	RIGHT_PANEL_WIDTH, VIRTUAL_SCREEN_HEIGHT
 };
 
+Panel menuPanel = {
+	(VIRTUAL_SCREEN_WIDTH / 2) - (MENU_PANEL_WIDTH / 2), (VIRTUAL_SCREEN_HEIGHT / 2) - (MENU_PANEL_HEIGHT / 2),
+	MENU_PANEL_WIDTH, MENU_PANEL_HEIGHT
+};
+
 void drawBox(App* app, int x, int y, int w, int h){
 	int ix, iy;
 	int truew = (w - 1);

@@ -103,12 +103,17 @@ void drawLevel(Level * level, App* app) {
 				(y >= (level->player->position->y - PLAYER_FOV)) &&
 				(y <= (level->player->position->y + PLAYER_FOV))
 				){
+				if (level->tiles[y][x]->explored == 0){
+					level->tiles[y][x]->explored = 1;
+				}
 				if ((x == level->player->position->x) && (y == level->player->position->y))
 					drawPlayer(level->player, app);
 				else
 					gridUTF8(level->tiles[y][x]->graphic, x, y, app);
 			}
-			
+			else if (level->tiles[y][x]->explored == 1){
+				gridUTF8(level->tiles[y][x]->graphicExplored, x, y, app);
+			}	
 		}
 	}
 }
@@ -119,10 +124,14 @@ void freeLevel(Level * level){
 	for (y = 0; y < LEVEL_HEIGHT; y++){
 		for (x = 0; x < LEVEL_WIDTH; x++){
 			freeTile(level->tiles[y][x]);
+			level->tiles[y][x] = NULL;
 		}
 		free(level->tiles[y]);
+		level->tiles[y] = NULL;
 	}
 
 	free(level->tiles);
+	level->tiles = NULL;
 	free(level);
+	level = NULL;
 }

@@ -1,9 +1,10 @@
 #include "setup.h"
 
-extern Panel logPanel;
-extern Panel leftPanel;
-extern Panel rightPanel;
-extern Panel mapBorder;
+extern const Panel logPanel;
+extern const Panel leftPanel;
+extern const Panel rightPanel;
+extern const Panel mapBorder;
+extern const Panel menuPanel;
 
 void prepareScene(App* app){
 	SDL_SetRenderDrawColor(app->renderer, 50, 50, 50, 255);
@@ -20,6 +21,11 @@ void presentScene(App* app, Level * level){
 	SDL_RenderPresent(app->renderer);
 
 	gameState = PLAYER_TURN;
+}
+
+void presentMenuScene(App *app){
+	drawPanel(app, menuPanel);
+	SDL_RenderPresent(app->renderer);
 }
 
 void drawUTF8Log(Message * message, int x, int y, int adjustedIndex, App* app) {

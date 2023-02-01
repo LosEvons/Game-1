@@ -6,7 +6,7 @@
 
 /* GameState */
 enum GameState {
-	PLAYER_TURN, PROCESSING,
+	PLAYER_TURN, PROCESSING, MAIN_MENU,
 };
 
 /* App */
@@ -39,7 +39,9 @@ typedef struct Player {
 /* gamemap.h */
 typedef struct Tile {
 	struct Graphic graphic;
+	struct Graphic graphicExplored;
 	int blocking;
+	int explored;
 } Tile;
 
 typedef struct Room {
@@ -48,6 +50,10 @@ typedef struct Room {
 	int w;
 	int h;
 } Room;
+
+enum LevelType{
+	NO_LEVEL, DEFAULT_LEVEL, CELLAR_LEVEL, CAVE_LEVEL,
+};
 
 typedef struct Level {
 	struct Tile *** tiles;

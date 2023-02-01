@@ -8,14 +8,14 @@ const unsigned int umberhulkPopulation = 10;
 Position prevPos = { -1, -1 };
 
 void releaseHulks(Level * level){
-	int i;
+	unsigned int i;
 	for (i = 0; i < umberhulkPopulation; i++){
 		castUmberhulk(level);
 	}
 }
 
 void castUmberhulk(Level * level){
-	int i;
+	unsigned int i;
 	Position currentPosition = {-1, -1 };
 
 	if (prevPos.x < 0 || prevPos.y < 0){
